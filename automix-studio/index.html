@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AutoMix Studio – automatic mixing and mastering</title>
+<meta name="description" content="Drop in your multitracks and press AUTO MIX. AutoMix Studio cleans, EQs, compresses, balances and masters every channel in your browser.">
+<meta property="og:title" content="AutoMix Studio">
+<meta property="og:description" content="Raw tracks in. Finished mix out. AI mixing and mastering in your browser.">
+<meta property="og:image" content="assets/mixer.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect x='3' y='12' width='4' height='15' rx='2' fill='%23FFB000'/%3E%3Crect x='10' y='5' width='4' height='22' rx='2' fill='%23FFB000'/%3E%3Crect x='17' y='9' width='4' height='18' rx='2' fill='%23FFB000'/%3E%3Crect x='24' y='15' width='4' height='12' rx='2' fill='%23FFB000'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0;background:#121314}
+a{color:#FFB000;text-decoration:none}a:hover{color:#FFD066}
+.lp *{box-sizing:border-box}
+.lp .wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 32px}
+.lp .navlinks a{color:#C9C5BC;font-size:15px;font-weight:500}.lp .navlinks a:hover{color:#EDEAE3}
+.lp .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:26px;font:700 17px 'Instrument Sans',sans-serif;letter-spacing:.01em}
+.lp .cta.pri{background:#FFB000;color:#141516}.lp .cta.pri:hover{background:#FFC233;color:#141516}
+.lp .cta.sec{border:1.5px solid #4A4B4E;color:#EDEAE3}.lp .cta.sec:hover{border-color:#EDEAE3;color:#EDEAE3}
+.lp .shot{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #34363A;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lp .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.lp .row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center}
+.lp .row.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.lp .row.flip .txt{order:2}
+@media (max-width:980px){.lp .row,.lp .row.flip{grid-template-columns:minmax(0,1fr);gap:32px}.lp .row.flip .txt{order:0}.lp .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.lp .navlinks{display:none!important}}
+@media (max-width:640px){.lp .grid3{grid-template-columns:minmax(0,1fr)}.lp .wrap{padding:0 18px}.lp .h1{font-size:68px!important}.lp .h2{font-size:52px!important}}
+
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+
+<div class="lp" style="width: 100%; background: #121314; color: #EDEAE3; font-family: 'Instrument Sans', sans-serif; overflow: hidden">
+
+<header style="border-bottom: 1px solid #232427">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; color: #EDEAE3">
+<svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><rect x="3" y="12" width="4" height="15" rx="2" fill="#FFB000"></rect><rect x="10" y="5" width="4" height="22" rx="2" fill="#FFB000"></rect><rect x="17" y="9" width="4" height="18" rx="2" fill="#FFB000"></rect><rect x="24" y="15" width="4" height="12" rx="2" fill="#FFB000"></rect></svg>
+<span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 0.04em; text-transform: uppercase">AutoMix Studio</span>
+</a>
+<nav class="navlinks" aria-label="Main" style="display: flex; gap: 34px">
+<a href="#how">How it works</a>
+<a href="#features">Features</a>
+<a href="#styles">Styles</a>
+<a href="#daw">Your DAW</a>
+</nav>
+<a class="cta pri" href="app.html" style="min-height: 44px; padding: 0 22px; font-size: 15px">Open the app</a>
+</div>
+</header>
+
+<section id="top" style="position: relative; padding: 96px 0 0">
+<div aria-hidden="true" style="position: absolute; inset: 0 0 auto 0; height: 900px; background-image: linear-gradient(#1C1D20 1px, transparent 1px), linear-gradient(90deg, #1C1D20 1px, transparent 1px); background-size: 56px 56px; opacity: 0.6"></div>
+<div class="wrap" style="position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px">
+<div style="display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border: 1px solid #3A3B3E; border-radius: 20px; font-size: 14px; color: #C9C5BC; font-family: 'JetBrains Mono', monospace">
+<span aria-hidden="true" style="width: 9px; height: 9px; border-radius: 50%; background: #2EE65A; box-shadow: 0 0 10px #2EE65A"></span>
+AI MIXING &amp; MASTERING · IN YOUR BROWSER
+</div>
+<h1 class="h1" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 132px; line-height: 0.86; letter-spacing: -0.005em; text-transform: uppercase; max-width: 1080px">Raw tracks in.<br><span style="color: #FFB000">Finished mix out.</span></h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.6; color: #C9C5BC; max-width: 680px">Drop in your multitracks and press AUTO MIX. AutoMix Studio cleans, EQs, compresses, balances and masters every channel — then exports a release-ready MP3.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
+<a class="cta pri" href="#start"><svg width="17" height="17" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1l1.6 4.4L13 7l-4.4 1.6L7 13l-1.6-4.4L1 7l4.4-1.6z" fill="currentColor"></path></svg>Start a mix</a>
+<a class="cta sec" href="#how">See how it works</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; font-size: 15px; color: #9A968C">
+<span>✓ Nothing to install</span><span>✓ Every decision stays editable</span><span>✓ Opens Cubase, Ableton, Logic &amp; Pro Tools sessions</span>
+</div>
+<div style="width: 100%; margin-top: 36px; position: relative">
+<div aria-hidden="true" style="position: absolute; left: 10%; right: 10%; top: 8%; bottom: 0; background: #FFB000; opacity: 0.16; filter: blur(90px); border-radius: 50%"></div>
+<img class="shot" src="assets/mixer.jpg" alt="The AutoMix Studio mixer during playback: nine channel strips with EQ curves, faders and LED meters, the master section and the output meter" style="position: relative">
+</div>
+</div>
+</section>
+
+<section id="daw" style="margin-top: 96px; border-top: 1px solid #232427; border-bottom: 1px solid #232427; background: #17181A; padding: 30px 0">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px">
+<span style="font-size: 16px; color: #9A968C">Open your session straight from your DAW — no bouncing every track:</span>
+<div style="display: flex; flex-wrap: wrap; gap: 44px; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: 0.03em; text-transform: uppercase; color: #C9C5BC">
+<span>Cubase</span><span>Ableton Live</span><span>Logic Pro</span><span>Pro Tools</span>
+</div>
+</div>
+</section>
+
+<section id="how" style="padding: 120px 0 40px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">HOW IT WORKS</span>
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 88px; line-height: 0.9; text-transform: uppercase">Three steps. One finished song.</h2>
+</div>
+<div class="grid3">
+<div style="background: #1A1B1D; border: 1px solid #2B2C2F; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 84px; line-height: 0.8; color: #FFB000">01</span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 700">Import</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9C5BC">Drop WAV or MP3 stems, or open a Cubase, Ableton, Logic or Pro Tools project. Every channel lands in its place on the timeline.</p>
+</div>
+<div style="background: #1A1B1D; border: 1px solid #2B2C2F; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 84px; line-height: 0.8; color: #FFB000">02</span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 700">AUTO MIX</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9C5BC">The AI recognises each instrument, cleans it, sets EQ and compression, pans doubled parts left and right and builds the balance around the vocal.</p>
+</div>
+<div style="background: #1A1B1D; border: 1px solid #2B2C2F; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 84px; line-height: 0.8; color: #FFB000">03</span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 700">Export</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9C5BC">Master to your platform’s loudness and export MP3 or WAV — or send the processed tracks back to your DAW.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="features" style="padding: 80px 0 40px">
+<div class="wrap" style="display: flex; flex-direction: column; gap: 120px">
+
+<div class="row">
+<div class="txt" style="display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">ARRANGE · AI PIPELINE</span>
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 64px; line-height: 0.92; text-transform: uppercase">Watch the AI build your mix</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #C9C5BC">Each step lights up green as it finishes — analyze, clean-up, gain staging, EQ, compression, reverb, balance and mastering. Pick from 20 mix styles and a loudness target before you start.</p>
+</div>
+<img loading="lazy" class="shot" src="assets/arrange.jpg" alt="Arrange view: the AI pipeline with every step done, the style menu and nine coloured waveforms on the timeline">
+</div>
+
+<div class="row flip">
+<div class="txt" style="display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">CHANNEL EDITOR</span>
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 64px; line-height: 0.92; text-transform: uppercase">See every move it made</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #C9C5BC">Open any channel to see its clean-up, a five-band EQ with draggable points and a colour RTA, a graphical gate and a compressor with a live transfer curve and gain-reduction history. Change anything and hear it instantly.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="padding: 6px 12px; border-radius: 14px; background: #1E1F22; border: 1px solid #34363A; font-size: 14px; color: #C9C5BC">Denoise</span>
+<span style="padding: 6px 12px; border-radius: 14px; background: #1E1F22; border: 1px solid #34363A; font-size: 14px; color: #C9C5BC">De-ess</span>
+<span style="padding: 6px 12px; border-radius: 14px; background: #1E1F22; border: 1px solid #34363A; font-size: 14px; color: #C9C5BC">Gate</span>
+<span style="padding: 6px 12px; border-radius: 14px; background: #1E1F22; border: 1px solid #34363A; font-size: 14px; color: #C9C5BC">Knee &amp; parallel mix</span>
+<span style="padding: 6px 12px; border-radius: 14px; background: #1E1F22; border: 1px solid #34363A; font-size: 14px; color: #C9C5BC">Plate · Hall · Delay</span>
+</div>
+</div>
+<img loading="lazy" class="shot" src="assets/edit.jpg" alt="Channel editor for the lead vocal: clean-up, EQ curve with coloured bands, sends, gate graph and compressor graphs with their controls">
+</div>
+
+<div class="row">
+<div class="txt" style="display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">MASTERING</span>
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 64px; line-height: 0.92; text-transform: uppercase">Loud enough. Never too loud.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #C9C5BC">Master EQ, multiband compression, stereo width and a true-peak-safe limiter take the song exactly to the target you choose — with Before / After and loudness-matched comparison.</p>
+</div>
+<img loading="lazy" class="shot" src="assets/master.jpg" alt="Master view: the mastered waveform, the mastering chain, LED output meter, loudness readings and export settings">
+</div>
+
+<div class="row flip">
+<div class="txt" style="display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">FROM YOUR DAW · AND BACK</span>
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 64px; line-height: 0.92; text-transform: uppercase">Your session, as you left it</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #C9C5BC">Open a Cubase DAWproject, an Ableton project folder, or a Logic / Pro Tools AAF. Clips, edits, fades, tempo and markers come across. When the mix is done, send the processed tracks back with their levels and pan.</p>
+</div>
+<img loading="lazy" class="shot" src="assets/fromdaw.jpg" alt="The Open a project from your DAW window with cards for Cubase, Ableton Live, Logic Pro and Pro Tools">
+</div>
+
+</div>
+</section>
+
+<section style="padding: 120px 0 40px">
+<div class="wrap">
+<div class="grid3">
+
+<div style="background: #1A1B1D; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #2B2C2F">
+<span style="align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: #2A2620; color: #FFB000; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px">L / R</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Doubled parts, spread wide</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C5BC">Two guitars playing the same part are detected and panned left and right automatically.</p>
+</div>
+
+<div style="background: #1A1B1D; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #2B2C2F">
+<span style="align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: #2A2620; color: #FFB000; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px">VOX</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">The vocal comes first</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C5BC">Channels named Vox or Voc are treated as the lead vocal and get presence, air and a place on top.</p>
+</div>
+
+<div style="background: #1A1B1D; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #2B2C2F">
+<span style="align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: #2A2620; color: #FFB000; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px">ROOM</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Room mics tamed</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C5BC">Room channels are pulled down so the ambience supports the mix instead of washing it out.</p>
+</div>
+
+<div style="background: #1A1B1D; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #2B2C2F">
+<span style="align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: #2A2620; color: #FFB000; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px">RTA</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Colour spectrum analyser</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C5BC">Watch each channel’s live spectrum behind its EQ curve while the song plays.</p>
+</div>
+
+<div style="background: #1A1B1D; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #2B2C2F">
+<span style="align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: #2A2620; color: #FFB000; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px">GR</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Real LED metering</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C5BC">LED meters with peak hold on every strip, gain-reduction ladders and a pinned output meter.</p>
+</div>
+
+<div style="background: #1A1B1D; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #2B2C2F">
+<span style="align-self: flex-start; padding: 6px 10px; border-radius: 8px; background: #2A2620; color: #FFB000; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px">FAST</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Smooth playback</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C5BC">Processing is frozen in the background, so even big sessions play without stutter.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="styles" style="padding: 100px 0">
+<div class="wrap row" style="gap: 56px">
+<div class="txt" style="display: flex; flex-direction: column; gap: 16px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">MIX STYLES</span>
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 72px; line-height: 0.9; text-transform: uppercase">20 styles. Each one sounds different.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #C9C5BC">A style changes levels, compression, low end, reverb and stereo width. Metal gets a hard-panned guitar wall and tight drums; Mizrahi puts a lush vocal on top; Lo-fi turns dark and warm.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #FFB000; color: #141516; border: 1px solid #FFB000">Pop</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Pop ballad</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">R&amp;B / Soul</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Hip-Hop</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Trap</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">EDM / Dance</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Lo-fi</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Rock</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Metal</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Indie</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Blues</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Funk</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Acoustic</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Folk / Country</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Mizrahi</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Latin</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Reggae</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Jazz</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Cinematic</span>
+
+<span style="padding: 10px 18px; border-radius: 22px; font-size: 16px; font-weight: 600; background: #1A1B1D; color: #EDEAE3; border: 1px solid #34363A">Live show</span>
+
+</div>
+</div>
+</section>
+
+<section style="padding: 0 0 120px">
+<div class="wrap">
+<div style="background: #1A1B1D; border: 1px solid #2B2C2F; border-radius: 20px; padding: 44px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #FFB000; letter-spacing: 0.14em">LOUDNESS TARGETS</span>
+<h2 style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 48px; line-height: 1; text-transform: uppercase">Right for every platform</h2>
+</div>
+<p style="margin: 0; font-size: 17px; color: #C9C5BC; max-width: 440px; line-height: 1.6">Choose where the song is going and the master lands exactly on its loudness.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px">
+
+<div style="background: #121314; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px; border: 1px solid #26272A">
+<span style="font-size: 15px; color: #9A968C">Spotify</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700; color: #EDEAE3">−14<span style="font-size: 13px; color: #9A968C; margin-left: 6px">LUFS</span></span>
+</div>
+
+<div style="background: #121314; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px; border: 1px solid #26272A">
+<span style="font-size: 15px; color: #9A968C">YouTube</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700; color: #EDEAE3">−14<span style="font-size: 13px; color: #9A968C; margin-left: 6px">LUFS</span></span>
+</div>
+
+<div style="background: #121314; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px; border: 1px solid #26272A">
+<span style="font-size: 15px; color: #9A968C">Apple Music</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700; color: #EDEAE3">−16<span style="font-size: 13px; color: #9A968C; margin-left: 6px">LUFS</span></span>
+</div>
+
+<div style="background: #121314; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px; border: 1px solid #26272A">
+<span style="font-size: 15px; color: #9A968C">Loud</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700; color: #EDEAE3">−11<span style="font-size: 13px; color: #9A968C; margin-left: 6px">LUFS</span></span>
+</div>
+
+<div style="background: #121314; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px; border: 1px solid #26272A">
+<span style="font-size: 15px; color: #9A968C">Club</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700; color: #EDEAE3">−9<span style="font-size: 13px; color: #9A968C; margin-left: 6px">LUFS</span></span>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section id="start" style="padding: 120px 0; background: #FFB000; color: #141516">
+<div class="wrap" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px">
+<h2 class="h2" style="margin: 0; font-family: 'Big Shoulders Display', sans-serif; font-weight: 900; font-size: 112px; line-height: 0.88; text-transform: uppercase">Your song is ready to be mixed.</h2>
+<p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 620px; color: #2A2620">Open the app, drop in your tracks and press AUTO MIX. No sign-up, no install.</p>
+<a class="cta" href="app.html" style="background: #141516; color: #EDEAE3; min-height: 58px; padding: 0 36px; font-size: 19px">Open AutoMix Studio</a>
+</div>
+</section>
+
+<footer style="padding: 34px 0; border-top: 1px solid #232427">
+<div class="wrap" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 15px; color: #9A968C">
+<span style="font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: #C9C5BC">AutoMix Studio</span>
+<span>© 2026 AD SOUND &amp; SERVICE</span>
+</div>
+</footer>
+</div>
+
+</body>
+</html>
