@@ -747,6 +747,7 @@ body.drawer-closed #inspector{display:none!important}
 .dwcard .dwnote{border-top:0;padding-top:0}
 .dwback .dwbrow{flex-basis:340px}
 </style>
+<script data-goatcounter="https://aviadderi.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <div class="app" id="app">
@@ -5216,11 +5217,14 @@ const App = (() => {
     applyPost() { touch('post'); Engine.applyAll(); },
     redraw() { renderTracks(); }
   };
+  // anonymous usage counts (GoatCounter, standalone site only): event names only — never audio, file names or settings
+  const track = (path, title) => { try { if (window.goatcounter && typeof window.goatcounter.count === 'function') window.goatcounter.count({ path, title: title || path, event: true }); } catch (e) { /* analytics is optional */ } };
   async function runAuto() {
     if (U.busy) return;
     if (!P.tracks.length) return toast('Import your audio files first.', true);
     Engine.pause(); updatePlayBtn();
     setBusy(true, 'AUTO MIX', 0, 'Starting');
+    track('automix', 'AUTO MIX · ' + P.style);
     etaStart();
     P.tracks.forEach(t => { t.cleaning = true; }); renderTracks();
     try {
@@ -5444,7 +5448,7 @@ const App = (() => {
       } else { prog(0.7, 'Writing WAV'); await tick(); parts = Enc.wav24(fin.chs, pre.sampleRate); }
       prog(1, 'Saving');
       await deliver(safeName($('fname').value) + '.' + fmt, parts);
-      setStep('Export', 'done');
+      setStep('Export', 'done'); track('export-' + fmt, 'Export ' + fmt.toUpperCase());
       addLog('Exported ' + fmt.toUpperCase() + ': ' + fin.stats.integrated.toFixed(1) + ' LUFS, ' + fin.stats.tp.toFixed(1) + ' dBTP');
     } catch (e) { console.error(e); toast(e.message || String(e), true); setStep('Export', 'idle'); }
     finally { setBusy(false); $('expProg').hidden = true; if (U.view === 'master') { renderMasterCards(); drawMasterWave(0); } }
@@ -5468,7 +5472,7 @@ const App = (() => {
       catch (e) { toast('Could not read ' + f.name + ' — this browser cannot decode it. Try WAV or MP3.', true); }
     }
     setBusy(false);
-    if (ok) { setStep('Import', 'done'); addLog('Imported ' + ok + ' file' + (ok > 1 ? 's' : '') + '. Press AUTO MIX.'); }
+    if (ok) { setStep('Import', 'done'); track('import-files', 'Import audio files'); addLog('Imported ' + ok + ' file' + (ok > 1 ? 's' : '') + '. Press AUTO MIX.'); }
     Engine.applySolo(); fitZoom(); renderAll();
   }
   /* ---------- DAW projects: open a Cubase / Ableton session, send the mix back ---------- */
@@ -5628,7 +5632,7 @@ const App = (() => {
       if (opt.keepTempo) P.markers = model.markers.map(m => ({ t: m.t, name: m.name }));
       $('mTitle').value = model.title || 'My Song'; $('fname').value = (model.title || 'My Song') + ' - Master';
       setBusy(false);
-      if (res.tracks.length) setStep('Import', 'done');
+      if (res.tracks.length) { setStep('Import', 'done'); track('import-' + model.kind, 'Open DAW project · ' + model.app); }
       addLog('Opened ' + (model.kind === 'dawproject' || model.kind === 'ableton' ? model.app + ' project ' : model.kind === 'aaf' ? model.app + ' ' : model.app.toLowerCase() + ' ') + '"' + model.file + '" — ' + res.tracks.length + ' track' + (res.tracks.length === 1 ? '' : 's') + (opt.keepTempo && !model.noTempo ? ', ' + P.bpm + ' BPM' : '') + '. Press AUTO MIX.');
       for (const n of model.notes) addLog(n);
       if (res.problems.length) { addLog('Not imported: ' + res.problems.join(', ') + '.'); toast(res.problems.length + ' audio file' + (res.problems.length > 1 ? 's were' : ' was') + ' missing or unreadable — see the log.', true); }
@@ -5668,7 +5672,7 @@ const App = (() => {
       files.unshift({ name: 'project.xml', parts: [enc.encode(DAW.projectXml({ bpm: P.bpm, sig: [4, 4], tracks, markers: P.markers || [] }))] });
       const blob = new Blob(Enc.zip(files), { type: 'application/octet-stream' });
       setBusy(false);
-      if (await saveBlob(safeName(title) + ' - AutoMix.dawproject', blob)) { addLog('Exported "' + safeName(title) + ' - AutoMix.dawproject" for Cubase — ' + tracks.length + ' processed tracks with their levels and pan.'); toast('Saved. In Cubase: File › Import › DAWproject.'); }
+      if (await saveBlob(safeName(title) + ' - AutoMix.dawproject', blob)) { track('back-cubase', 'Back to Cubase'); addLog('Exported "' + safeName(title) + ' - AutoMix.dawproject" for Cubase — ' + tracks.length + ' processed tracks with their levels and pan.'); toast('Saved. In Cubase: File › Import › DAWproject.'); }
     } catch (e) { console.error(e); setBusy(false); toast('Could not export: ' + (e.message || e), true); }
   }
   // 24-bit WAV with a BWF 'bext' chunk: the time stamp lets Logic / Pro Tools put the file back at its original place
@@ -5708,7 +5712,7 @@ const App = (() => {
       const blob = new Blob(Enc.zip(files), { type: 'application/zip' });
       setBusy(false);
       const zipName = safeName(title) + ' - ' + (target === 'ableton' ? 'Stems' : NAMES[target] + ' Stems') + '.zip';
-      if (await saveBlob(zipName, blob)) addLog('Exported ' + files.length + ' stems for ' + NAMES[target] + ' (processed, with level and pan, all starting at the song start' + (target === 'ableton' ? '' : ', time-stamped') + ').');
+      if (await saveBlob(zipName, blob)) { track('back-' + target, 'Back to ' + NAMES[target]); addLog('Exported ' + files.length + ' stems for ' + NAMES[target] + ' (processed, with level and pan, all starting at the song start' + (target === 'ableton' ? '' : ', time-stamped') + ').'); }
     } catch (e) { console.error(e); setBusy(false); toast('Could not export the stems: ' + (e.message || e), true); }
   }
   /* ---------- LED output meter ---------- */
