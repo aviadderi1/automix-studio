@@ -17,6 +17,16 @@ AI mixing and mastering in the browser. Drop in your multitracks, press **AUTO M
 | `index.html` | Landing page |
 | `app.html` | The app — one self-contained file |
 | `assets/` | Screenshots used by the landing page |
+| `media/` | Marketing kit: Instagram reel, Instagram post, A4 flyer |
+
+## Media kit
+| File | Format | Use |
+|---|---|---|
+| [`media/automix-reel.mp4`](media/automix-reel.mp4) | 1080×1920 · 26 s · H.264 + AAC 320 kbps | Instagram / TikTok / Shorts reel, with an original rock soundtrack |
+| [`media/instagram-post.png`](media/instagram-post.png) | 1080×1350 | Instagram feed post |
+| [`media/flyer-a4.pdf`](media/flyer-a4.pdf) · [`png`](media/flyer-a4.png) | A4 | Print flyer with QR code to the site |
+
+The reel's music is an original composition synthesised from scratch for this video — no samples or third-party audio.
 
 ## Publish with GitHub Pages
 1. Upload all files in this folder to the root of a new repository (keep `assets/` as a folder).
